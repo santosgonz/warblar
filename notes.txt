@@ -1,0 +1,11 @@
+    user_id = session.get(CURR_USER_KEY)
+    user = User.query.get(user_id)
+Get current session key and we can get our user from getting the id in the session key
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+g.user made in earlier function will relay it later
+    form = EditForm()
+    if form.validate_on_submit():
+        if bcrypt.check_password_hash(user.password, request.form['password']):
+we can use this to authinticate PASSWORD ONLY  cxzvzxc
